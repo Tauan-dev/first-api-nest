@@ -14,17 +14,17 @@ export class CourseService {
 
   //METHODS CRUDING
 
-  findAll() {
+  async findAll() {
     return this.courseRepository.find();
-  }
+  } // todos os métodos estão realizando operações assíncronas (se observar o retorno é uma promisse), ou seja isso vai levar um tempo até acontecer, ao acessar o banco de dados e depois retornar a resposta, por esse motivo os métodos serão assincronos
 
   findOne(id: number) {
-    return this.courses.find((course) => course.id === id);
+    return this.courseRepository.findOne(id);
   }
   // percorre cada item de dentro de um array e retorna os dados com id correspondente
 
   create(createCourse: any) {
-    this.courses.push(...createCourse);
+    this.courseRepository.create();
   }
 
   update(id: number, updateCourse: any) {

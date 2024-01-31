@@ -25,6 +25,7 @@
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Estudando o framework NestJS, projeto utiliza TypeOrm e MySQL, aplicando conhecimentos aprendidos ao longo do curso.
 
 ## Installation
 
