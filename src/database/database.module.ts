@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Course } from "src/course/entities/course.entity";
+import { Tag } from "src/course/entities/tag.entity";
 import { DataSourceOptions } from "typeorm";
 
 export const dataSourceOptions: DataSourceOptions = {
@@ -10,7 +11,7 @@ export const dataSourceOptions: DataSourceOptions = {
   username: "root",
   password: "tauan198",
   database: "nest",
-  entities: [Course], //é utilizado para definidar cada entidade que o typeorm vai utilizar para definir os campos de cada tabela do banco de dados, onde cada entidade se reflete em uma tabela
+  entities: [Course, Tag], //é utilizado para definidar cada entidade que o typeorm vai utilizar para definir os campos de cada tabela do banco de dados, onde cada entidade se reflete em uma tabela
   synchronize: true, //futuramente será mudado pelas migrations
 };
 
