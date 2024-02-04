@@ -1,4 +1,10 @@
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { Tag } from "./tag.entity";
 
 @Entity("courses") //esse parametro passado no decorator @Entity, vai ser o nome da tabela dentro do banco de dados
@@ -13,7 +19,9 @@ export class Course {
   description: string;
 
   @JoinTable() // usado na tabela principal em uma relação ManyToMany para indicar quem é o proprietário da relação
-  @ManyToMany(() => Tag, (tag) => tag.courses)
+  @ManyToMany(() => Tag, (tag) => tag.courses, {
+    cascade: true, // indica que qualquer dado da entidade tag, que estiver nas operações de post ou put/patch
+  })
   tags: Tag[];
   // os parametros recebidos são respectivamente () => Tag, sendo a entidade relacionada e (tag) => tag.courses que é o inverseSide, ou seja a propriedade course na entidade tag
 }
