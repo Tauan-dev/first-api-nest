@@ -20,11 +20,16 @@ export class CourseService {
   //METHODS CRUDING
 
   async findAll() {
-    return await this.courseRepository.find();
+    return await this.courseRepository.find({
+      relations: ["tags"], // trás os dados relacionados quando fizer as buscas
+    });
   } // todos os métodos estão realizando operações assíncronas (se observar o retorno é uma promisse), ou seja isso vai levar um tempo até acontecer, ao acessar o banco de dados e depois retornar a resposta, por esse motivo os métodos serão assincronos
 
   async findOne(id: number) {
-    const course = await this.courseRepository.findOne({ where: { id } });
+    const course = await this.courseRepository.findOne({
+      where: { id },
+      relations: ["tags"],
+    });
     if (!course) {
       throw new NotFoundException(`Course whit ID ${id} not found`);
     }
