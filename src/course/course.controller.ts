@@ -30,7 +30,7 @@ export class CourseController {
   // após passar o decorator Param, deve ser declarado qual o nome da variável que vai receber esses valores.
 
   @Get(":id")
-  findOne(@Param("id") id: number) {
+  findOne(@Param("id") id: string) {
     return this.courseService.findOne(id);
   }
 
@@ -47,13 +47,13 @@ export class CourseController {
   //para lidar com statuts code, é declarado um decorator @Http.code(nrm do status) acima do decorator do metodo utilizado @Get, @Post etc.
 
   @Put(":id")
-  update(@Param("id") id: number, @Body() UpdateCourse: UpdateCourse) {
-    return this.courseService.update(+id, UpdateCourse);
+  update(@Param("id") id: string, @Body() UpdateCourse: UpdateCourse) {
+    return this.courseService.update(id, UpdateCourse);
   }
 
   @Delete()
-  remove(@Param("id") id: number) {
-    return this.courseService.remove(+id);
+  remove(@Param("id") id: string) {
+    return this.courseService.remove(id);
   }
 
   // para atualização são utilizado Patch e Put, sendo patch utilizado para atualização de um recurso e PUT para atualização todos os dados
