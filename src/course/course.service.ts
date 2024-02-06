@@ -25,7 +25,7 @@ export class CourseService {
     });
   } // todos os métodos estão realizando operações assíncronas (se observar o retorno é uma promisse), ou seja isso vai levar um tempo até acontecer, ao acessar o banco de dados e depois retornar a resposta, por esse motivo os métodos serão assincronos
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     const course = await this.courseRepository.findOne({
       where: { id },
       relations: ["tags"],
@@ -47,7 +47,7 @@ export class CourseService {
     return this.courseRepository.save(course); // salva a instância criada acima
   }
 
-  async update(id: number, updateCourse: UpdateCourse) {
+  async update(id: string, updateCourse: UpdateCourse) {
     const tags =
       updateCourse.tags &&
       (await Promise.all(
@@ -65,7 +65,7 @@ export class CourseService {
     return this.courseRepository.save(course); // salva a instância criada
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     const course = await this.courseRepository.findOne({
       where: { id },
     });
