@@ -9,7 +9,7 @@ export class CreateCoursesTable1707224351214 implements MigrationInterface {
         columns: [
           {
             name: "id",
-            type: "varchar", // definido como varchar pois o mysql não tem um tipo de dado pra uuid
+            type: "varchar(36)", // definido como varchar pois o mysql não tem um tipo de dado pra uuid
             isPrimary: true, // define chave primária
             generationStrategy: "uuid", // indica ao typeOrm que deve se gerar UUIDs automaticamente para o campo 'id'
           },
