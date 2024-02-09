@@ -29,6 +29,7 @@ export class CourseController {
 
   // após passar o decorator Param, deve ser declarado qual o nome da variável que vai receber esses valores.
 
+  
   @Get(":id")
   findOne(@Param("id") id: string) {
     return this.courseService.findOne(id);
